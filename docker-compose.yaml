@@ -1,0 +1,21 @@
+services:
+
+db-server:
+  image: postgres:16
+  volumes:
+    - ./data:/var/lib/postgres/pgdata
+  environment:
+      POSTGRES_USER: evan
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: shop
+  ports:
+    - "10.64.133.107:5432:5432"
+
+db-gui:
+  image: elestio/pgadmin
+  environment:
+      PGADMIN_DEFAULT_EMAIL: evanmaldiney@icloud.com
+      PGADMIN_DEFAULT_PASSWORD: password
+      PGADMIN_LISTEN_PORT: 8080
+  ports:
+    - "10.64.133.107:80:80"
